@@ -11,6 +11,7 @@ class HouseList extends Component {
 
   componentDidMount() {
     axios.get('http://localhost:3000/api/houses').then(response => {
+      console.log(response.data)
       this.setState({ houses: response.data })
     })
   }
@@ -34,6 +35,7 @@ class HouseList extends Component {
           onChange={this.onSearchChange}
           placeholder="Search"
         />
+
         <div className="list-group">
           {this.state.houses.map(house => (
             <HouseListItem key={house.id} house={house} />
@@ -41,8 +43,7 @@ class HouseList extends Component {
         </div>
 
         <Link className="btn btn-primary" to="/houses/new">
-          {' '}
-          Create{' '}
+          Create
         </Link>
       </>
     )

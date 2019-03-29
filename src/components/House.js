@@ -39,6 +39,7 @@ class House extends Component {
     axios
       .get(`http://localhost:3000/api/houses/${this.props.match.params.id}`)
       .then(response => {
+        console.log(response.data)
         this.setState({ house: response.data })
       })
   }
@@ -106,15 +107,15 @@ class House extends Component {
           title: 'Name',
           default: ''
         },
-        house: {
-          type: 'string',
-          title: 'House',
-          default: ''
-        },
+        // house: {
+        //   type: 'string',
+        //   title: 'House',
+        //   default: ''
+        // },
         born: {
-          type: 'date',
-          title: 'Born',
-          default: ''
+          type: 'string',
+          format: 'date',
+          title: 'Born'
         }
       }
     }
@@ -126,12 +127,16 @@ class House extends Component {
       <>
         <ul className="list-group mb-3">
           <li className="list-group-item active">{this.state.house.name}</li>
-          <li className="list-group-item">{this.state.house.mascot}</li>
-          <li className="list-group-item">{this.state.house.element}</li>
-          <li className="list-group-item">{this.state.house.head}</li>
-          <li className="list-group-item">{this.state.house.founder}</li>
+          <li className="list-group-item">Mascot: {this.state.house.mascot}</li>
+          <li className="list-group-item">
+            Element: {this.state.house.element}
+          </li>
+          <li className="list-group-item">Head: {this.state.house.head}</li>
+          <li className="list-group-item">
+            Founder: {this.state.house.founder}
+          </li>
         </ul>
-        {this.renderStudent()}
+        {this.renderStudents()}
         {this.addStudentForm()}
         <div className="mb-3">
           <Link

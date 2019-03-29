@@ -5,7 +5,9 @@ import Form from 'react-jsonschema-form'
 
 class StudentDetails extends Component {
   state = {
-    student: {},
+    student: {
+      house: {}
+    },
     editing: false
   }
 
@@ -32,7 +34,7 @@ class StudentDetails extends Component {
     return (
       <ul className="list-group mb-3">
         <li className="list-group-item">{name}</li>
-        <li className="list-group-item">{house}</li>
+        <li className="list-group-item">{house.name}</li>
         <li className="list-group-item">{born}</li>
       </ul>
     )
@@ -67,12 +69,12 @@ class StudentDetails extends Component {
         },
         house: {
           type: 'string',
-          title: 'house',
+          title: 'House',
           default: house
         },
         born: {
-          type: 'date',
-          title: 'born',
+          type: 'string',
+          title: 'Born',
           default: born
         }
       }
